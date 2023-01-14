@@ -1,0 +1,236 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --hue: 235;
+  --bg-color: hsl(var(--hue), 22%, 20%);
+  --ff-heading: 'Epilogue', sans-serif;
+  --ff-text: 'Open Sans', sans-serif;
+  --fc-primary: hsl(var(--hue), 0%, 100%);
+  --fc-secondary: hsl(var(--hue), 50%, 80%);
+  --fc-terciary: hsl(var(--hue), 100%, 11%);
+
+  font-size: 62.5%;
+  --fs-body: 1.6rem;
+  --fs-heading: clamp(4rem, 1rem + 5vw, 5.6rem);
+  --fs-heading-sm: clamp(3rem, 0.5rem + 4vw, 4rem);
+}
+
+body {
+  background: var(--bg-color);
+  font-family: var(--ff-text);
+  font-size: var(--fs-body);
+  color: var(--fc-primary);
+}
+
+.page {
+  max-width: clamp (33rem, 30rem + 60vw, 90rem);
+  margin: 0 auto;
+  padding: 0 10rem;
+}
+
+header {
+  text-align: center;
+  margin: 10rem 0 8rem;
+
+  animation-name: headerzoom;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  transition: all 500ms;
+}
+
+header h1 {
+  font-family: var(--ff-heading);
+  font-weight: 800;
+  font-size: var(--fs-heading);
+  line-height: 4.8rem;
+
+  animation-name: h1zoom;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  transition: all 500ms;
+}
+
+header h5 {
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 1.7rem;
+}
+
+main {
+  display: grid;
+  gap: 3.2rem;
+  margin-bottom: 3.2rem;
+
+  animation-name: main;
+  animation-duration: 4s;
+  animation-timing-function: ease;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.card {
+  position: relative;
+  color: var(--fc-primary);
+}
+
+.card img {
+
+  object-fit: cover;
+  height: 41.6rem;
+  border-radius: 6px;
+  transition: all 500ms;
+}
+
+.card h2 {
+  position: absolute;
+  left: 2.8rem;
+  bottom: 5.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.3rem;
+  font-size: var(--fs-heading-sm);
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.card h2 span {
+  background-color: hsl(var(--hue), 0%, 100%);
+  border-radius: 2rem;
+  color: var(--fc-terciary);
+  font-family: var(--ff-heading);
+  font-weight: 500;
+  font-size: 1.6rem;
+  text-shadow: none;
+  padding: 0rem 1.6rem;
+
+  width: fit-content;
+  height: 3.8rem;
+
+  display: inline-flex;
+  align-items: center;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card:hover>img {
+  transform: scale(1.1);
+}
+
+.card:hover>h2 {
+  color: hsl(var(--hue), 0%, 70%);
+}
+
+.card:hover>h2 span {
+  background-color: hsl(var(--hue), 0%, 70%);
+}
+
+#scary {
+  top: -5rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  opacity: 0;
+
+  animation: scary 3s forwards;
+  transition: all 700ms;
+}
+
+@keyframes headerzoom {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    font-size: large;
+  }
+}
+
+@keyframes h1zoom {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    font-size: 6rem;
+    color: red;
+  }
+}
+
+@keyframes main {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scary {
+  0% {
+    opacity: 0.2;
+  }
+
+
+  100% {
+    opacity: 0;
+    transform: scale(1.1);
+    display: none;
+    z-index: -2;
+  }
+}
+
+@media (min-width: 730px) {
+  :root {
+    --fs-heading: 5.6rem
+  }
+
+  main {
+    gap: 6rem;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 930px) {
+  main {
+    grid-template-areas: "A B B"
+      "C C D";
+
+    grid-template-columns: auto;
+  }
+
+  main a:nth-child(1) {
+    grid-area: A;
+  }
+
+  main a:nth-child(2) {
+    grid-area: B;
+  }
+
+  main a:nth-child(3) {
+    grid-area: C;
+  }
+
+  main a:nth-child(4) {
+    grid-area: D;
+  }
+}
