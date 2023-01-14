@@ -209,28 +209,3 @@ img {
     grid-template-columns: 1fr 1fr;
   }
 }
-
-@media (min-width: 930px) {
-  main {
-    grid-template-areas: "A B B"
-      "C C D";
-
-    grid-template-columns: auto;
-  }
-
-  main a:nth-child(1) {
-    grid-area: A;
-  }
-
-  main a:nth-child(2) {
-    grid-area: B;
-  }
-
-  main a:nth-child(3) {
-    grid-area: C;
-  }
-
-  main a:nth-child(4) {
-    grid-area: D;
-  }
-}
